@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="E:\program_learn\Flask\Transcript\env"
+VIRTUAL_ENV="E:\program_learn\FlaskTraining\Transcript\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
