@@ -53,6 +53,7 @@
 <div class="stats">
     <p>{{ Transcripts|length }} Courses</p>
 </div>
+{% if current_user.is_authenticated %}
 <form method="post">
     Course Name <input type="text" name="title" autocomplete="off" required>
     Year <input type="text" name="year" autocomplete="off" required>
@@ -61,6 +62,7 @@
     Grade <input type="text" name="Grade" autocomplete="off" required>
     <input class="btn" type="submit" name="submit" value="Add">
 </form>
+{% endif %}
 <table class="transcript-table">
     <thead>
         <tr>
@@ -69,8 +71,10 @@
             <th>Credits</th>
             <th>Hours</th>
             <th>Grade</th>
+            {% if current_user.is_authenticated %}
             <th>Edit</th>
             <th>Delete</th>
+            {% endif %}
         </tr>
     </thead>
     <tbody>
@@ -84,12 +88,14 @@
             <td>{{ course.Credits }}</td>
             <td>{{ course.Hours }}</td>
             <td>{{ course.Grade }}</td>
+            {% if current_user.is_authenticated %}
             <td><a class="btn" href="{{ url_for('edit', course_id=course.id) }}">Edit</a></td>
             <td>
                 <form class="inline-form" method="post" action="{{ url_for('.delete', course_id=course.id) }}">
                     <input class="btn" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure?')">
                 </form>
             <td>
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>
