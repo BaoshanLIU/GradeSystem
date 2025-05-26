@@ -1,0 +1,83 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ name }}'s Transcript</title>
+    <link rel="icon" href="{{ url_for('static', filename='ico_sdu.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="header">{{ name }}'s Transcript in Shandong University</h2>
+        <div class="stats">
+            <p>{{ Transcripts_text|length }} Courses</p>
+        </div>
+        
+        <table class="transcript-table">
+            <thead>
+                <tr>
+                    <th>Course Title</th>
+                    <th>Academic Year</th>
+                    <th>Credits</th>
+                    <th>Hours</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in Transcripts_text %}
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.year }}</td>
+                    <td>{{ course.Credits }}</td>
+                    <td>{{ course.Hours }}</td>
+                    <td>{{ course.Grade }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="logo-container">
+            <img alt="sdu_logo" class="sdu-logo" src="{{ url_for('static', filename='logo_sdu.png') }}">
+        </div>
+
+        <footer>
+            <small>&copy; 2024 <a href="#">Shandong University</a></small>
+        </footer>
+    </div>
+</body>
+</html> -->
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="stats">
+    <p>{{ Transcripts_text|length }} Courses</p>
+</div>
+
+<table class="transcript-table">
+    <thead>
+        <tr>
+            <th>Course Title</th>
+            <th>Academic Year</th>
+            <th>Credits</th>
+            <th>Hours</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in Transcripts_text %}
+        <tr>
+            <!-- <td>{{ course.title }}</td>
+            <td>{{ course.year }}</td>
+            <td>{{ course.Grade }}</td> -->
+            <td>{{ course.title }}</td>
+            <td>{{ course.year }}</td>
+            <td>{{ course.Credits }}</td>
+            <td>{{ course.Hours }}</td>
+            <td>{{ course.Grade }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

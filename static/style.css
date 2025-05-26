@@ -1,0 +1,256 @@
+/* 页面整体 */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+    border-bottom: 2px solid #D40000;
+    padding-bottom: 10px;
+}
+
+.stats {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+/* 成绩表格 */
+.transcript-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.transcript-table th,
+.transcript-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.transcript-table th {
+    background-color: #D40000;
+    color: white;
+    font-weight: 600;
+}
+
+.transcript-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.transcript-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Logo容器 */
+.logo-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.sdu-logo {
+    max-width: 150px;
+    padding: 15px;
+    background-color: #D40000;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.sdu-logo:hover {
+    transform: scale(1.05);
+}
+
+/* 页脚 */
+footer {
+    text-align: center;
+    color: #95a5a6;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ecf0f1;
+}
+
+footer a {
+    color: #D40000;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* 404页面特定样式 */
+.error-row {
+    background-color: #ffe6e6;
+    border-left: 4px solid #D40000;
+}
+
+.error-code {
+    font-weight: bold;
+    color: #D40000;
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+
+.return-link {
+    color: #D40000;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.return-link:hover {
+    background-color: #D40000;
+    color: white;
+    text-decoration: none;
+}
+
+.float-right {
+    float: right;
+}
+
+
+/* 导航栏 */
+nav ul {
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #D40000;
+    border-radius: 5px;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+nav li a:hover {
+    background-color: #B20000;
+}
+
+.header-logo {
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.error-table {
+    margin-top: 30px;
+}
+
+
+/* 覆盖某些浏览器对 input 元素定义的字体 */
+input[type=submit] {
+    font-family: inherit;
+}
+
+input[type=text] {
+    border: 1px solid #ddd;
+}
+
+input[name=year] {
+    width: 50px;
+}
+
+.btn {
+    font-size: 12px;
+    padding: 3px 5px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 1px solid #555555;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.alert {
+    position: relative;
+    padding: 7px;
+    margin: 7px 0;
+    border: 1px solid transparent;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    border-radius: 5px;
+}
+
+.inline-form {
+    display: inline;
+}
+
+
+/* 侧边栏优化 */
+.sidebar {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.university-info {
+    margin-top: 20px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.university-info h3 {
+    color: #D40000;
+    margin-bottom: 10px;
+}
+
+/* 宽屏表格增强 */
+@media (min-width: 1200px) {
+    .transcript-table {
+        font-size: 0.95em;
+    }
+    
+    .transcript-table th,
+    .transcript-table td {
+        padding: 10px 12px;
+    }
+}
+
+/* 复杂表格响应式处理 */
+.table-container {
+    overflow-x: auto;
+    background: 
+        linear-gradient(to right, white 30%, rgba(255,255,255,0)),
+        linear-gradient(to left, white 30%, rgba(255,255,255,0)),
+        linear-gradient(to right, rgba(0,0,0,0.1) 1px, rgba(0,0,0,0));
+    background-attachment: local, local, scroll;
+}

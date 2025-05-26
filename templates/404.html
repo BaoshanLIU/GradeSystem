@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ name }}'s Transcript - 404{% endblock %}
+
+{% block content %}
+<table class="transcript-table error-table">
+    <tbody>
+        <tr class="error-row">
+            <td>
+                <span class="error-code">404</span>
+                Page Not Found
+                <span class="float-right">
+                    <a href="{{ url_for('index_database') }}" class="return-link">← Return to Transcript</a>
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}
