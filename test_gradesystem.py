@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from app import app, db, Transcripts, User, forge, initdb
+#from app import app, db, Transcripts, User, forge, initdb
 
+from gradesystem import app, db
+from gradesystem.models import Transcripts, User
+from gradesystem.commands import forge, initdb
 
 class WatchlistTestCase(unittest.TestCase):
 
