@@ -1,83 +1,179 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{{ name }}'s Transcript</title>
-    <link rel="icon" href="{{ url_for('static', filename='ico_sdu.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIU Baoshan's Transcript</title>
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+        }
+        
+        /* 头部样式 */
+        header {
+            text-align: center;
+            margin: 40px 0 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            font-weight: 400;
+        }
+        
+        /* 主要内容区域 */
+        main {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+        
+        main:hover {
+            transform: translateY(-5px);
+        }
+        
+        .education-section {
+            padding: 30px;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            color: #3498db;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 3px;
+        }
+        
+        /* 列表样式 */
+        .education-list {
+            list-style: none;
+        }
+        
+        .education-list li {
+            margin-bottom: 18px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            border-left: 4px solid #3498db;
+        }
+        
+        .education-list li:hover {
+            background-color: #e3f2fd;
+            transform: translateX(5px);
+        }
+        
+        .education-list a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            transition: color 0.2s ease;
+        }
+        
+        .education-list a:hover {
+            color: #3498db;
+        }
+        
+        .education-list li::before {
+            content: "🎓";
+            margin-right: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .education-section {
+                padding: 20px 15px;
+            }
+            
+            .education-list li {
+                padding: 12px 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2 class="header">{{ name }}'s Transcript in Shandong University</h2>
-        <div class="stats">
-            <p>{{ Transcripts_text|length }} Courses</p>
+    <header>
+        <h2>LIU Baoshan's Transcript</h2>
+        <p class="subtitle">Academic Journey & Achievements</p>
+    </header>
+    
+    <main>
+        <div class="education-section">
+            <h3>Education Experience</h3>
+            <ul class="education-list">
+                <li><a href="{{ url_for('index_database') }}">Shandong University</a></li>
+                <li><a href="{{ url_for('index_database_ucas') }}">University of Chinese Academy of Sciences</a></li>
+                <li><a href="{{ url_for('index_database_cityuhk') }}">City University of Hong Kong</a></li>
+                <li><a href="{{ url_for('index_database_polyuhk') }}">Hong Kong Polytechnic University</a></li>
+            </ul>
         </div>
-        
-        <table class="transcript-table">
-            <thead>
-                <tr>
-                    <th>Course Title</th>
-                    <th>Academic Year</th>
-                    <th>Credits</th>
-                    <th>Hours</th>
-                    <th>Grade</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for course in Transcripts_text %}
-                <tr>
-                    <td>{{ course.title }}</td>
-                    <td>{{ course.year }}</td>
-                    <td>{{ course.Credits }}</td>
-                    <td>{{ course.Hours }}</td>
-                    <td>{{ course.Grade }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        <div class="logo-container">
-            <img alt="sdu_logo" class="sdu-logo" src="{{ url_for('static', filename='logo_sdu.png') }}">
-        </div>
-
-        <footer>
-            <small>&copy; 2024 <a href="#">Shandong University</a></small>
-        </footer>
-    </div>
+    </main>
+    
+    <footer>
+        <small>&copy; 2025 HelloFlask</small>
+    </footer>
 </body>
-</html> -->
-
-
-{% extends 'base.html' %}
-
-{% block content %}
-<div class="stats">
-    <p>{{ Transcripts_text|length }} Courses</p>
-</div>
-
-<table class="transcript-table">
-    <thead>
-        <tr>
-            <th>Course Title</th>
-            <th>Academic Year</th>
-            <th>Credits</th>
-            <th>Hours</th>
-            <th>Grade</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for course in Transcripts_text %}
-        <tr>
-            <!-- <td>{{ course.title }}</td>
-            <td>{{ course.year }}</td>
-            <td>{{ course.Grade }}</td> -->
-            <td>{{ course.title }}</td>
-            <td>{{ course.year }}</td>
-            <td>{{ course.Credits }}</td>
-            <td>{{ course.Hours }}</td>
-            <td>{{ course.Grade }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% endblock %}
+</html>

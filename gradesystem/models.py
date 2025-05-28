@@ -25,3 +25,28 @@ class Transcripts(db.Model):  # 表名将会是 Transcripts
     Hours = db.Column(db.String(10))
     Credits = db.Column(db.String(10))
 
+
+class Transcripts_ucas(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # 主键
+    title = db.Column(db.String(60))  # 课程标题
+    year = db.Column(db.String(10))  # 课程年份
+    Grade = db.Column(db.String(10))
+    Hours = db.Column(db.String(10))
+    Credits = db.Column(db.String(10))
+
+
+class Transcripts_cityuhk(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # 主键
+    Code = db.Column(db.String(10))
+    title = db.Column(db.String(60))  # 课程标题
+    year = db.Column(db.String(10))  # 课程年份
+    Grade = db.Column(db.String(10))
+    Credits = db.Column(db.String(10))
+
+class Transcripts_polyuhk(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # 主键
+    Code = db.Column(db.String(10))
+    title = db.Column(db.String(60))  # 课程标题
+    year = db.Column(db.String(10))  # 课程年份
+    Grade = db.Column(db.String(10))
+    Credits = db.Column(db.String(10))

@@ -20,7 +20,7 @@ body {
     color: #2c3e50;
     margin-bottom: 25px;
     font-size: 2.2em;
-    border-bottom: 2px solid #D40000;
+    border-bottom: 2px solid #66023C;
     padding-bottom: 10px;
 }
 
@@ -47,7 +47,7 @@ body {
 }
 
 .transcript-table th {
-    background-color: #D40000;
+    background-color: #66023C;
     color: white;
     font-weight: 600;
 }
@@ -76,7 +76,7 @@ body {
 }
 
 .transcript-table_ucas th {
-    background-color: #D40000;
+    background-color: #66023C;
     color: white;
     font-weight: 600;
 }
@@ -97,22 +97,19 @@ body {
     margin: 30px 0;
 }
 
-.sdu-logo {
+.cityuhk-logo {
     max-width: 150px;
     padding: 15px;
-    background-color: #D40000;
+    background-color: #66023C;
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
 
 
-.sdu-logo:hover {
+.cityuhk-logo:hover {
     transform: scale(1.05);
 }
 
-.ucas-logo:hover {
-    transform: scale(1.05);
-}
 
 /* 页脚 */
 footer {
@@ -124,7 +121,7 @@ footer {
 }
 
 footer a {
-    color: #D40000;
+    color: #66023C;
     text-decoration: none;
 }
 
@@ -136,18 +133,18 @@ footer a:hover {
 /* 404页面特定样式 */
 .error-row {
     background-color: #ffe6e6;
-    border-left: 4px solid #D40000;
+    border-left: 4px solid #66023C;
 }
 
 .error-code {
     font-weight: bold;
-    color: #D40000;
+    color: #66023C;
     margin-right: 15px;
     font-size: 1.2em;
 }
 
 .return-link {
-    color: #D40000;
+    color: #66023C;
     text-decoration: none;
     font-weight: 500;
     padding: 5px 10px;
@@ -156,7 +153,7 @@ footer a:hover {
 }
 
 .return-link:hover {
-    background-color: #D40000;
+    background-color: #66023C;
     color: white;
     text-decoration: none;
 }
@@ -172,7 +169,7 @@ nav ul {
     margin: 20px 0;
     padding: 0;
     overflow: hidden;
-    background-color: #D40000;
+    background-color: #66023C;
     border-radius: 5px;
 }
 
@@ -190,7 +187,7 @@ nav li a {
 }
 
 nav li a:hover {
-    background-color: #B20000;
+    background-color: #33011E;
 }
 
 .header-logo {
@@ -266,7 +263,7 @@ input[name=year] {
 }
 
 .university-info h3 {
-    color: #D40000;
+    color: #66023C;
     margin-bottom: 10px;
 }
 

@@ -20,10 +20,9 @@ body {
     color: #2c3e50;
     margin-bottom: 25px;
     font-size: 2.2em;
-    border-bottom: 2px solid #D40000;
+    border-bottom: 2px solid #0033A0;
     padding-bottom: 10px;
 }
-
 
 .stats {
     text-align: center;
@@ -47,7 +46,7 @@ body {
 }
 
 .transcript-table th {
-    background-color: #D40000;
+    background-color: #0033A0;
     color: white;
     font-weight: 600;
 }
@@ -60,35 +59,6 @@ body {
     border-bottom: none;
 }
 
-/* 成绩表格 */
-.transcript-table_ucas {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-.transcript-table_ucas th,
-.transcript-table_ucas td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #ecf0f1;
-}
-
-.transcript-table_ucas th {
-    background-color: #D40000;
-    color: white;
-    font-weight: 600;
-}
-
-.transcript-table_ucas tr:hover {
-    background-color: #f9f9f9;
-}
-
-.transcript-table_ucas tr:last-child td {
-    border-bottom: none;
-}
-
 
 
 /* Logo容器 */
@@ -97,18 +67,15 @@ body {
     margin: 30px 0;
 }
 
-.sdu-logo {
+
+.ucas-logo {
     max-width: 150px;
     padding: 15px;
-    background-color: #D40000;
+    background-color: #0033A0;
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
 
-
-.sdu-logo:hover {
-    transform: scale(1.05);
-}
 
 .ucas-logo:hover {
     transform: scale(1.05);
@@ -124,7 +91,7 @@ footer {
 }
 
 footer a {
-    color: #D40000;
+    color: #0033A0;
     text-decoration: none;
 }
 
@@ -136,18 +103,18 @@ footer a:hover {
 /* 404页面特定样式 */
 .error-row {
     background-color: #ffe6e6;
-    border-left: 4px solid #D40000;
+    border-left: 4px solid #0033A0;
 }
 
 .error-code {
     font-weight: bold;
-    color: #D40000;
+    color: #0033A0;
     margin-right: 15px;
     font-size: 1.2em;
 }
 
 .return-link {
-    color: #D40000;
+    color: #0033A0;
     text-decoration: none;
     font-weight: 500;
     padding: 5px 10px;
@@ -156,7 +123,7 @@ footer a:hover {
 }
 
 .return-link:hover {
-    background-color: #D40000;
+    background-color: #0033A0;
     color: white;
     text-decoration: none;
 }
@@ -172,7 +139,7 @@ nav ul {
     margin: 20px 0;
     padding: 0;
     overflow: hidden;
-    background-color: #D40000;
+    background-color: #0033A0;
     border-radius: 5px;
 }
 
@@ -190,7 +157,7 @@ nav li a {
 }
 
 nav li a:hover {
-    background-color: #B20000;
+    background-color: #002366;
 }
 
 .header-logo {
@@ -240,7 +207,7 @@ input[name=year] {
     padding: 7px;
     margin: 7px 0;
     border: 1px solid transparent;
-    color: #004085;
+    color: #0033A0;
     background-color: #cce5ff;
     border-color: #b8daff;
     border-radius: 5px;
@@ -266,7 +233,7 @@ input[name=year] {
 }
 
 .university-info h3 {
-    color: #D40000;
+    color: #0033A0;
     margin-bottom: 10px;
 }
 

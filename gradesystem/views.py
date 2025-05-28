@@ -3,11 +3,13 @@ from flask import render_template, request, url_for, redirect, flash
 from flask_login import login_user, login_required, logout_user, current_user
 
 from gradesystem import app, db
-from gradesystem.models import User, Transcripts
-
+from gradesystem.models import User, Transcripts, Transcripts_ucas, Transcripts_cityuhk, Transcripts_polyuhk
 
 from flask_login import login_required, current_user
-@app.route('/', methods=['GET', 'POST'])
+
+
+#山大成绩单的主视图
+@app.route('/sdu', methods=['GET', 'POST'])
 def index_database():
     if request.method == 'POST':  # 判断是否是 POST 请求
         if not current_user.is_authenticated:  # 如果当前用户未认证
@@ -33,7 +35,15 @@ def index_database():
     return render_template('index_database.html', Transcripts=courses)
 
 
-@app.route('/course/edit/<int:course_id>', methods=['GET', 'POST'])
+
+
+
+
+
+
+
+#山大成绩单的修改成绩视图
+@app.route('/sdu/course/edit/<int:course_id>', methods=['GET', 'POST'])
 @login_required
 def edit(course_id):
     course = Transcripts.query.get_or_404(course_id)
@@ -61,8 +71,8 @@ def edit(course_id):
     return render_template('edit.html', course=course)  # 传入被编辑的电影记录
 
 
-
-@app.route('/course/delete/<int:course_id>', methods=['POST'])  # 限定只接受 POST 请求
+#山大成绩单的删除视图
+@app.route('/sdu/course/delete/<int:course_id>', methods=['POST'])  # 限定只接受 POST 请求
 @login_required  # 登录保护
 def delete(course_id):
     course = Transcripts.query.get_or_404(course_id)  # 获取电影记录
@@ -72,10 +82,11 @@ def delete(course_id):
     return redirect(url_for('index_database'))  # 重定向回主页
 
 
+
+
 from flask_login import login_required, current_user
-
 # ...
-
+#山大成绩单的设定用户视图
 @app.route('/settings', methods=['GET', 'POST'])
 @login_required
 def settings():
@@ -99,9 +110,8 @@ def settings():
 
 
 from flask_login import login_user
-
 # ...
-
+#山大成绩单的登入视图
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -126,9 +136,8 @@ def login():
 
 
 from flask_login import login_required, logout_user
-
 # ...
-
+# 山大成绩单的登出视图
 @app.route('/logout')
 @login_required  # 用于视图保护，后面会详细介绍
 def logout():
@@ -136,3 +145,93 @@ def logout():
     flash('Goodbye.')
     return redirect(url_for('index_database'))  # 重定向回首页
 
+
+
+
+#国科大成绩单的主视图
+@app.route('/ucas', methods=['GET', 'POST'])
+def index_database_ucas():
+    if request.method == 'POST':  # 判断是否是 POST 请求
+        if not current_user.is_authenticated:  # 如果当前用户未认证
+            return redirect(url_for('index_database'))  # 重定向到主页
+        # 获取表单数据
+        title = request.form.get('title')  # 传入表单对应输入字段的 name 值
+        year = request.form.get('year')
+        Credits = request.form.get('Credits')
+        Hours = request.form.get('Hours')
+        Grade = request.form.get('Grade')
+        # 验证数据
+        if not title or not year or len(year) > 10 or len(title) > 60:
+            flash('Invalid input.')  # 显示错误提示
+            return redirect(url_for('index_database'))  # 重定向回主页
+        # 保存表单数据到数据库
+        course = Transcripts_ucas(title=title, year=year, Grade=Grade, Hours=Hours, Credits=Credits)  # 创建记录
+        db.session.add(course)  # 添加到数据库会话
+        db.session.commit()  # 提交数据库会话
+        flash('Item created.')  # 显示成功创建的提示
+        return redirect(url_for('index_database'))  # 重定向回主页
+
+    courses = Transcripts_ucas.query.all()  # 读取所有电影记录
+    return render_template('index_database_ucas.html', Transcripts=courses)
+
+
+#国科大成绩单的主视图
+@app.route('/cityuhk', methods=['GET', 'POST'])
+def index_database_cityuhk():
+    if request.method == 'POST':  # 判断是否是 POST 请求
+        if not current_user.is_authenticated:  # 如果当前用户未认证
+            return redirect(url_for('index_database'))  # 重定向到主页
+        # 获取表单数据
+        title = request.form.get('title')  # 传入表单对应输入字段的 name 值
+        year = request.form.get('year')
+        Credits = request.form.get('Credits')
+        Code = request.form.get('Code')
+        Grade = request.form.get('Grade')
+        # 验证数据
+        if not title or not year or len(year) > 10 or len(title) > 60:
+            flash('Invalid input.')  # 显示错误提示
+            return redirect(url_for('index_database'))  # 重定向回主页
+        # 保存表单数据到数据库
+        course = Transcripts_cityuhk(title=title, year=year, Grade=Grade, Code=Code, Credits=Credits)  # 创建记录
+        db.session.add(course)  # 添加到数据库会话
+        db.session.commit()  # 提交数据库会话
+        flash('Item created.')  # 显示成功创建的提示
+        return redirect(url_for('index_database'))  # 重定向回主页
+
+    courses = Transcripts_cityuhk.query.all()  # 读取所有电影记录
+    return render_template('index_database_cityuhk.html', Transcripts=courses)
+
+
+#国科大成绩单的主视图
+@app.route('/polyuhk', methods=['GET', 'POST'])
+def index_database_polyuhk():
+    if request.method == 'POST':  # 判断是否是 POST 请求
+        if not current_user.is_authenticated:  # 如果当前用户未认证
+            return redirect(url_for('index_database'))  # 重定向到主页
+        # 获取表单数据
+        title = request.form.get('title')  # 传入表单对应输入字段的 name 值
+        year = request.form.get('year')
+        Credits = request.form.get('Credits')
+        Code = request.form.get('Code')
+        Grade = request.form.get('Grade')
+        # 验证数据
+        if not title or not year or len(year) > 10 or len(title) > 60:
+            flash('Invalid input.')  # 显示错误提示
+            return redirect(url_for('index_database'))  # 重定向回主页
+        # 保存表单数据到数据库
+        course = Transcripts_polyuhk(title=title, year=year, Grade=Grade, Code=Code, Credits=Credits)  # 创建记录
+        db.session.add(course)  # 添加到数据库会话
+        db.session.commit()  # 提交数据库会话
+        flash('Item created.')  # 显示成功创建的提示
+        return redirect(url_for('index_database_polyuhk'))  # 重定向回主页
+
+    courses = Transcripts_polyuhk.query.all()  # 读取所有电影记录
+    return render_template('index_database_polyuhk.html', Transcripts=courses)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/cv')
+def cv():
+    return render_template('cv.html')

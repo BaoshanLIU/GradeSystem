@@ -1,0 +1,103 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ user.name }}'s Transcript</title>
+    <link rel="icon" href="{{ url_for('static', filename='ico_sdu.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="header">{{ user.name }}'s Transcript in Shandong University</h2>
+        <div class="stats">
+            <p>{{ Transcripts|length }} Courses</p>
+        </div>
+        
+        <table class="transcript-table">
+            <thead>
+                <tr>
+                    <th>Course Title</th>
+                    <th>Academic Year</th>
+                    <th>Credits</th>
+                    <th>Hours</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in Transcripts %}
+                <tr>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.year }}</td>
+                    <td>{{ course.Credits }}</td>
+                    <td>{{ course.Hours }}</td>
+                    <td>{{ course.Grade }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="logo-container">
+            <img alt="sdu_logo" class="sdu-logo" src="{{ url_for('static', filename='logo_sdu.png') }}">
+        </div>
+
+        <footer>
+            <small>&copy; 2024 <a href="#">Shandong University</a></small>
+        </footer>
+    </div>
+</body>
+</html> -->
+
+{% extends 'base_polyuhk.html' %}
+
+{% block content %}
+<div class="stats">
+    <p>{{ Transcripts|length }} Courses</p>
+</div>
+{% if current_user.is_authenticated %}
+<form method="post">
+    Course Name <input type="text" name="title" autocomplete="off" required>
+    Year <input type="text" name="year" autocomplete="off" required>
+    Credits <input type="text" name="Credits" autocomplete="off" required>
+    Hours <input type="text" name="Hours" autocomplete="off" required>
+    Grade <input type="text" name="Grade" autocomplete="off" required>
+    <input class="btn" type="submit" name="submit" value="Add">
+</form>
+{% endif %}
+<table class="transcript-table">
+    <thead>
+        <tr>
+            <th>Course Code</th>
+            <th>Course Title</th>
+            <th>Academic Year</th>
+            <th>Credits</th>
+            <th>Grade</th>
+            {% if current_user.is_authenticated %}
+            <th>Edit</th>
+            <th>Delete</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in Transcripts %}
+        <tr>
+            <!-- <td>{{ course.title }}</td>
+            <td>{{ course.year }}</td>
+            <td>{{ course.Grade }}</td> -->
+            <td>{{ course.Code }}</td>
+            <td>{{ course.title }}</td>
+            <td>{{ course.year }}</td>
+            <td>{{ course.Credits }}</td>
+            <td>{{ course.Grade }}</td>
+            {% if current_user.is_authenticated %}
+            <td><a class="btn" href="{{ url_for('edit', course_id=course.id) }}">Edit</a></td>
+            <td>
+                <form class="inline-form" method="post" action="{{ url_for('.delete', course_id=course.id) }}">
+                    <input class="btn" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure?')">
+                </form>
+            <td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

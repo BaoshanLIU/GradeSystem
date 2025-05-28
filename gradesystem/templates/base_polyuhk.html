@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ user.name }}'s Transcript{% endblock %}</title>
-    <link rel="icon" href="{{ url_for('static', filename='ico_sdu.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+    <link rel="icon" href="{{ url_for('static', filename='ico_polyuhk.webp') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_polyuhk.css') }}" type="text/css">
     {% endblock %}
 </head>
 <body>
@@ -18,7 +18,7 @@
         <div class="content-wrapper">
             {% block header %}
             <h2 class="header">
-                {{ user.name }}'s Transcript in Shandong University
+                {{ user.name }}'s Transcript in Hong Kong Polytechnic University
             </h2>
             {% endblock %}
 
@@ -41,19 +41,19 @@
 
         <div class="sidebar">
             <div class="logo-container">
-                <img alt="SDU Seal" class="sdu-logo" 
-                     src="{{ url_for('static', filename='logo_sdu.png') }}">
+                <img alt="PolyU Seal" class="polyuhk-logo" 
+                     src="{{ url_for('static', filename='logo_polyuhk.png') }}">
                 <div class="university-info">
-                    <h3>Shandong University</h3>
-                    <p>Founded in 1901</p>
-                    <p>Jinan/Weihai/Qingdao, Shandong, China</p>
+                    <h3>Hong Kong Polytechnic University</h3>
+                    <p>Founded in 1994</p>
+                    <p>Hong Kong SAR, China</p>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <small>&copy; 2024 <a href="https://www.sdu.edu.cn">Shandong University</a></small>
+        <small>&copy; 2024 <a href="https://www.polyu.edu.hk/">Hong Kong Polytechnic University</a></small>
     </footer>
 </body>
 </html>
